@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="menu-container">
+    <div class="images">
+      <img src="Menu.jpg" alt="صورة 1" class="active">
+      <img src="Menu.jpg" alt="صورة 1">
+    </div>
+
+    <div class="buttons">
+      <button id="back-btn" class="icon-btn">&#8592;</button>
+      <button id="next-btn" class="icon-btn">&#8594;</button>
+    </div>
+  </div>
+<audio id="flip-sound" src="Flip.mp3"></audio>
+  <script src="script.js"></script>
+  
+</body>
+
+
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.menu-container {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.images {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.images img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.images img.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+.icon-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: yellow;
+  color: green;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background-color: rgba(255,255,255,0.6);
+}
+</style>
+
+<script>
+const images = document.querySelectorAll('.images img');
+const backBtn = document.getElementById('back-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const flipSound = new Audio('page-flip.mp3');
+flipSound.volume = 0.5;
+
+let current = 0;
+
+function showImage(index, direction = 'next') {
+  images.forEach((img, i) => {
+    img.classList.remove('active');
+    img.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
+    img.style.opacity = 0;
+  });
+
+  const newImg = images[index];
+  newImg.classList.add('active');
+  newImg.style.transform = 'translateX(0)';
+  newImg.style.opacity = 1;
+
+  flipSound.currentTime = 0;
+  flipSound.play().catch(e => console.log(e));
+}
+
+// أزرار
+backBtn.addEventListener('click', () => {
+  current = (current - 1 + images.length) % images.length;
+  showImage(current, 'back');
+});
+
+nextBtn.addEventListener('click', () => {
+  current = (current + 1) % images.length;
+  showImage(current, 'next');
+});
+
+// دعم السوايب
+let startX = 0;
+let endX = 0;
+const imagesContainer = document.querySelector('.images');
+
+imagesContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+imagesContainer.addEventListener('touchmove', e => endX = e.touches[0].clientX);
+
+imagesContainer.addEventListener('touchend', () => {
+  const diff = endX - startX;
+  if(diff > 50) {
+    current = (current - 1 + images.length) % images.length;
+    showImage(current, 'back');
+  } else if(diff < -50) {
+    current = (current + 1) % images.length;
+    showImage(current, 'next');
+  }
+  startX = 0;
+  endX = 0;
+});
+    
+</script>
+</html>

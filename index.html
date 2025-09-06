@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carte-digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+          <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<!-- HTML -->
+       <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+<header class="main-header">
+          <div class="open-badge">
+        <span class="dot"></span>
+        <span class="text"></span>
+        <span class="clock">
+<i class="fa fa-clock"></i></span>
+      </div>
+  <div class="logo-wrap">
+    <img src="Logo1.jpg" alt="Logo" class="logo">
+  </div>
+</header>
+
+<h2 class="contact-title">Contact Us</h2>
+  <!-- مثال لمحتوى تحت باش تشوف الاستجابة -->
+
+            <section class="special-block">
+                 
+    <div class="btns">
+ <!-- زر فتح الخريطة -->
+<a href="#" class="btn" id="openMap"><i class="fa-solid fa-map-location-dot"></i> Location</a>
+
+<!-- المودال -->
+<div id="mapModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <!-- لوغو واسم فوق الخريطة -->
+    <div class="map-logo">
+      <img src="Logo1.jpg" alt="Logo">
+      <div class="map-title">Welcom to Tacos Smash</div>
+    </div>
+
+    <iframe 
+      src="https://www.google.com/maps/embed/v1/place?q=33.885314%2C-5.569669&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" 
+      width="100%" height="500" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<style>
+/* مودال الخلفية */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* محتوى المودال */
+.modal-content {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1300px;
+  background: yellow;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* زر الإغلاق */
+.close {
+  color: green;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* اللوغو واسم فوق الخريطة */
+.map-logo {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.map-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.map-title {
+  margin-top: 5px;
+  font-weight: bold;
+  color: white;
+  background: #31ff1599;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+</style>
+
+<script>
+// فتح المودال
+var modal = document.getElementById("mapModal");
+var btn = document.getElementById("openMap");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// إغلاق المودال
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// إغلاق عند الضغط خارج المودال
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+<a href="menu.html" class="btn">
+  <i class="fa-solid fa-book-open"></i>Our menu
+</a>
+    <a href="https://www.instagram.com/tacosnsmash?igsh=MWtiaWs3NjVtZG02YQ==" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://wa.me/212678630651" class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a href="Game.html" class="btn"><i class="fas fa-dice"></i> <!-- إذا بغيتي جو ستايل ديال لعبة --> Our game</a>
+
+  </div>
+  
+        <section class="special-dishes">
+<h2 class="contact-title2">Why tacos smash ? </h2>
+    <div class="dishes-container">
+      
+      <div class="dish-box">
+        <div class="label">TACOS SMASH</div>
+        <img src="Q2.jpg" alt="plat 1" />
+        <h3>   اللّذة اللي كتدوّخ    </h3>
+        <p> معنا غادي تكتشف طعم مختلف، لذة كتجمع  بين الجودة والسرعة. </p>
+      </div>
+
+      <div class="dish-box">
+        <div class="label">TACOS SMASH</div>
+        <img src="Q1.jpg" alt="plat 2" />
+        <h3>Try once, come back.</h3>
+      <p>With Tacos smash, discover a new taste, a flavor that combines quality and speed.
+</p>
+      </div>
+    </div>
+    <div class="rating-container">
+        <h2 class="contact-title2">Rate our snack </h2>
+  <div class="rating">
+    <span data-value="5">★</span>
+    <span data-value="4">★</span>
+    <span data-value="3">★</span>
+    <span data-value="2">★</span>
+    <span data-value="1">★</span>
+  </div>
+  <div id="message">شكرا على تقييمك</div>
+</div>
+  </section>
+    </section>
+
+    
+<!-- Footer -->
+<footer class="footer">
+  <!-- Logo / شعار -->
+  <div class="footer-logo">
+    <img src="Top2.png" alt="Pyro Logo">
+  </div>
+
+  <!-- حقوق الطبع -->
+  <p class="footer-copy">&copy; 2025 tacos smash. All rights reserved by <a href="https://wa.me/+19403866910">Top-team</a></p>
+</footer> 
+
+<script>
+function updateBadge() {
+  const badge = document.querySelector('.open-badge');
+  const dot = badge.querySelector('.dot');
+  const text = badge.querySelector('.text');
+  
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // 🔹 توقيت الفتح و الإغلاق
+  const startHour = 10;
+  const startMinute = 0;
+  const endHour = 23;
+  const endMinute = 59;
+
+  // الشرط: مفتوح إلا كان داخل هاد المدة
+  if (
+    (hour > startHour && hour < endHour) ||
+    (hour === startHour && minute >= startMinute) ||
+    (hour === endHour && minute < endMinute)
+  ) {
+    text.textContent = "Open";
+    dot.style.backgroundColor = "#2db34a"; // أخضر
+    dot.style.boxShadow = "0 0 0 4px rgba(45,179,74,0.12)";
+  } else {
+    text.textContent = "Closed";
+    dot.style.backgroundColor = "#e74c3c"; // أحمر
+    dot.style.boxShadow = "0 0 0 4px rgba(231,76,60,0.12)";
+  }
+}
+
+updateBadge();
+setInterval(updateBadge, 60000); // يتحدث كل دقيقة
+</script>
+
+<!-- JS -->
+<script>
+const stars = document.querySelectorAll(".rating span");
+const message = document.getElementById("message");
+
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    stars.forEach(s => s.classList.remove("selected"));
+    star.classList.add("selected");
+
+    message.classList.add("show");
+
+    setTimeout(() => {
+      message.classList.remove("show");
+    }, 2000); // الرسالة تختفي بعد 2 ثواني
+  });
+});
+</script>
+ 
+ <script>
+  window.addEventListener("load", function () {
+    const loader = document.querySelector(".loader");
+    loader.style.opacity = "1";
+
+    // نعملو واحد الأنيميشين قبل مايختفي
+    loader.style.transition = "opacity 0.8s ease";
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 800); // خاصها تكون بحال مدة transition
+    }, 500); // غادي تبقى نص ثانية قبل ما تبدا تنقص
+  });
+</script>  
+
+</body>
+</html>
